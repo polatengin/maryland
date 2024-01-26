@@ -97,3 +97,47 @@ wsl
 ```bash
 uname -r
 ```
+
+## Instructions to build the module
+
+- Run `make` to build the module:
+
+```bash
+make
+```
+
+- To load the module into the kernel, run:
+
+```bash
+sudo insmod azure_storage.ko
+```
+
+- To check the kernel log, run:
+
+```bash
+dmesg | tail -5
+```
+
+- You should see something like this:
+
+```bash
+[  123.456789] Azure Storage Module loaded to memory
+```
+
+- To unload the module from the kernel, run:
+
+```bash
+make unload
+```
+
+- To check the kernel log, run:
+
+```bash
+dmesg | tail -5
+```
+
+- You should see something like this:
+
+```bash
+[  123.456789] Azure Storage Module unloaded from memory
+```
