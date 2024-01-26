@@ -141,3 +141,9 @@ dmesg | tail -5
 ```bash
 [  123.456789] Azure Storage Module unloaded from memory
 ```
+
+## Next steps
+
+Now we have a simple Linux Kernel Module that can be loaded and unloaded into the kernel.
+
+The next step is to implement the logic to map a folder to an Azure Storage Account, based on a configuration file 👍
