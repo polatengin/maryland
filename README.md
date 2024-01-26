@@ -147,3 +147,8 @@ dmesg | tail -5
 Now we have a simple Linux Kernel Module that can be loaded and unloaded into the kernel.
 
 The next step is to implement the logic to map a folder to an Azure Storage Account, based on a configuration file 👍
+
+## References
+
+- [Linux Kernel Module Programming Guide](https://tldp.org/LDP/lkmpg/2.6/html/index.html)
+- [Makefile Tutorial](https://makefiletutorial.com/)
