@@ -10,5 +10,9 @@ static int __init module_init(void) {
   return 0;
 }
 
+static void __exit module_exit(void) {
+  pr_info("Azure Storage Module unloaded from memory\n");
+}
 
 module_init(module_init);
+module_exit(module_exit);
