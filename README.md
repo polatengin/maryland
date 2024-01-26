@@ -37,3 +37,63 @@ With the `all` target, we're telling the Makefile to build the module `azure_sto
 `unload` is a target in the Makefile, it's used to unload the module from the kernel.
 
 `sudo rmmod azure_storage` is the command used to unload the module from the kernel.
+
+## Instructions to prepare the environment
+
+> **Note:** I'm using WSL2 on my machine, this repository is based on the [WSL2-Linux-Kernel](https://github.com/microsoft/WSL2-Linux-Kernel)
+
+- Install required packages:
+
+```bash
+sudo apt install build-essential flex bison libssl-dev libelf-dev git dwarves -y
+```
+
+- Clone WSL2 Linux Kernel source code from the official repository:
+
+```bash
+git clone https://github.com/microsoft/WSL2-Linux-Kernel.git
+cd WSL2-Linux-Kernel
+```
+
+- Copy the configuration file from the running kernel:
+
+```bash
+cp Microsoft/config-wsl .config
+```
+
+- Build the kernel:
+
+```bash
+make -j $(expr $(nproc) - 1)
+```
+
+> At this point, you can go grab a coffee ☕, it will take a while to build the kernel.
+>
+> When it's done, new kernel can be found at: `./arch/x86/boot/bzImage`
+
+- Copy the new kernel to the WSL2 root folder:
+
+```bash
+cp ./arch/x86/boot/bzImage /mnt/c/Users/{user}/
+```
+
+- Create/update the WSL2 configuration file (`%UserProfile%\\.wslconfig`):
+
+```bash
+[wsl2]
+kernel=C:\\Users\\{user}\\bzimage
+```
+
+- Restart WSL2:
+
+```powershell
+wsl --shutdown
+
+wsl
+```
+
+- Check the new kernel version:
+
+```bash
+uname -r
+```
